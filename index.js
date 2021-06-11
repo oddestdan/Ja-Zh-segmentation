@@ -74,12 +74,12 @@ const exampleText = getText();
 
 testPerf(() => {
   const segmenterZh1 = hanziTools;
-  console.log(`1) hanzi-tools`, segmenterZh1.segment(exampleText).slice(0, 20));
+  console.log(`1) hanzi-tools`, segmenterZh1.segment(exampleText).join("|"));
 });
 
 testPerf(() => {
   const segmenterZh2 = nodejieba;
-  console.log(`2) nodejieba`, segmenterZh2.cut(exampleText).slice(0, 20));
+  console.log(`2) nodejieba`, segmenterZh2.cut(exampleText).join("|"));
 });
 
 testPerf(() => {
@@ -91,14 +91,14 @@ testPerf(() => {
       .doSegment(exampleText, {
         simple: true,
       })
-      .slice(0, 20)
+      .join("|")
   );
 });
 
 testPerf(() => {
   const segmenterZh4 = nodersjieba;
   segmenterZh4.load();
-  console.log(`4) nodersjieba`, segmenterZh4.cut(exampleText).slice(0, 20));
+  console.log(`4) nodersjieba`, segmenterZh4.cut(exampleText).join("|"));
 });
 
 testPerf(() => {
@@ -110,6 +110,6 @@ testPerf(() => {
       .doSegment(exampleText, {
         simple: true,
       })
-      .slice(0, 20)
+      .join("|")
   );
 });
